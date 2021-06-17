@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 1rem;
+}
+
+body {
+  padding: 2rem;
+}
+
+button {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.show {
+  display: -ms-grid;
+  display: grid;
+}
+
+.show#init-options {
+  display: block;
+}
+/*# sourceMappingURL=index.css.map */
