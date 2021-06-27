@@ -1,14 +1,14 @@
 import GameState from './classes/GameState';
 // import ConfettiGenerator from "confetti-js";
 
-let gameState: GameState;
-let answer: string = "init";
-let letterBank: string[];
+let gameState;
+let answer = "init";
+let letterBank;
 // Answer Input
 
-let answerInput = document.querySelector('#answer-input input') as HTMLInputElement;
+let answerInput = document.querySelector('#answer-input input');
 
-let startGameBtn: HTMLElement | null;
+let startGameBtn;
 startGameBtn = document.getElementById('start-offline-game-btn')
 
 if (startGameBtn && answerInput) {
@@ -22,7 +22,7 @@ if (startGameBtn && answerInput) {
       const prompt = document.getElementById('answer-input-prompt');
       if (prompt) {
         prompt.style.display = 'none';
-        let gameBoard = document.getElementById('game-board') as HTMLElement;
+        let gameBoard = document.getElementById('game-board');
 
         if (gameBoard) {
           gameBoard.style.display = 'grid';
@@ -35,14 +35,14 @@ if (startGameBtn && answerInput) {
 // Body container
 
 const body = document.getElementById('body-container');
-let head: HTMLElement | null;
-let leftEye: HTMLElement | null;
-let rightEye: HTMLElement | null;
-let torso: HTMLElement | null;
-let leftArm: HTMLElement | null;
-let rightArm: HTMLElement | null;
-let leftLeg: HTMLElement | null;
-let rightLeg: HTMLElement | null;
+let head;
+let leftEye;
+let rightEye;
+let torso;
+let leftArm;
+let rightArm;
+let leftLeg;
+let rightLeg;
 
 
 // Body Parts
@@ -64,7 +64,7 @@ if (body) {
 
 // Body Functions
 
-function show(part: HTMLElement | null) {
+function show(part) {
   if (part) {
     part.classList.toggle('show');
   } else {
@@ -114,7 +114,7 @@ function badGuess() {
 
 // Game Board Functions
 
-function initGame(answerValue: string) {
+function initGame(answerValue) {
   let letterBank = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ]
   
   // resetGraphic()
@@ -133,7 +133,7 @@ function initGame(answerValue: string) {
 //   }
 // }
 
-function showAnswerSpaces(value: string) {
+function showAnswerSpaces(value) {
   const answerBoard = document.getElementById("answer-board");
   
   if (answerBoard) {
@@ -161,7 +161,7 @@ function showAnswerSpaces(value: string) {
   }
 }
 
-function showLetter(letter: string) {
+function showLetter(letter) {
   const letterSpaces = document.getElementById("letter-spaces");
   
   if (letterSpaces) {
@@ -181,7 +181,7 @@ function showLetter(letter: string) {
   }
 }
 
-function showLetterBank(letters: string[]) {
+function showLetterBank(letters) {
   const wordBank = document.getElementById("word-bank");
   
   if (wordBank) {
@@ -210,13 +210,13 @@ const wordBank = document.getElementById("word-bank")
 
 if (wordBank) {
   wordBank.addEventListener("click", (e) => {
-    const target = e.target as HTMLElement | null;
+    const target = e.target;
 
     if (target && target.classList.contains("letter")) {
-      let selectedLetter: string | null = target.textContent;
+      let selectedLetter = target.textContent;
 
       if (selectedLetter) {
-        let bankIndex: number = letterBank.indexOf(selectedLetter.toUpperCase())
+        let bankIndex = letterBank.indexOf(selectedLetter.toUpperCase())
         
         console.log(answer)
         if (answer.includes(selectedLetter.toUpperCase())) {

@@ -1,5 +1,5 @@
 export default class AnswerSpaces {
-    constructor(answer: string) {
+    constructor(answer) {
         
     }
 }
