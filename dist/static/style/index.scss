@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 1rem;
+}
+
+body {
+    min-height: 100vh;
+    padding: 2rem;
+    display: grid;
+    place-items: center;
+    font-family: "Lato", "Open Sans", sans-serif;
+    background: #fcfcfc;
+}
+
+#game-options {
+    width: 100%;
+}
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.25rem;
+    display: block;
+    background-color: burlywood;
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    padding: 1rem;
+    margin: 20px 0;
+}
