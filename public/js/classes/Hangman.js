@@ -9,8 +9,6 @@ export default class Hangman {
         this.rightArm = null;
         this.leftLeg = null;
         this.rightLeg = null;
-
-        this.init();
     }
 
     init() {
@@ -26,13 +24,13 @@ export default class Hangman {
             this.leftLeg = body.querySelector('.leg.left');
             this.rightLeg = body.querySelector('.leg.right');
 
-            this.reset(body)
+            this.reset()
         }
     }
 
-    reset(body) {
-        body.classList.remove("dead");
-        let visibleBodyParts = body.querySelectorAll(".show");
+    reset() {
+        this.bodyContainer.classList.remove("dead");
+        let visibleBodyParts = this.bodyContainer.querySelectorAll(".show");
         
         for(let i = 0; i < visibleBodyParts.length; i++) {
           visibleBodyParts[i].classList.toggle("show");

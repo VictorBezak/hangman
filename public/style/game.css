@@ -13,51 +13,48 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 1rem;
 }
 
 #answer-input-prompt {
-  height: 100%;
-  display: -ms-grid;
-  display: grid;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 1rem;
 }
 
 #answer-input-prompt #answer-input {
   background: #fcfcfc;
-  padding: 12px;
+  padding: 24px 12px;
   border-radius: 5px;
   border: solid 1px lightslategrey;
   -webkit-box-shadow: -2px 2px 10px 0 #ccc;
           box-shadow: -2px 2px 10px 0 #ccc;
-  -ms-grid-row: 2;
-  grid-row: 2;
 }
 
 #answer-input-prompt #answer-input input {
   margin-top: 12px;
   display: block;
   width: 100%;
+  font-size: 1rem;
   padding: 0.5rem;
 }
 
 #answer-input-prompt button {
-  -ms-grid-row: 3;
-  grid-row: 3;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
   width: 100%;
+  margin-top: 12px;
   font-size: 1rem;
-  padding: 1rem 0;
+  padding: 2rem 0;
 }
 
 #game-board {
   display: none;
+  height: 100%;
   -ms-grid-rows: 2fr 1fr 2fr;
       grid-template-rows: 2fr 1fr 2fr;
-  place-items: center;
+  justify-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
 }
 
 #body-container {
@@ -178,7 +175,7 @@ body {
 }
 
 #word-bank .letter {
-  padding: 5px;
+  padding: 1rem;
   border: solid 1px grey;
 }
 

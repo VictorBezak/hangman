@@ -11,12 +11,12 @@ html {
 
 body {
   min-height: 100vh;
-  padding: 2rem;
   display: -ms-grid;
   display: grid;
   place-items: center;
   font-family: "Lato", "Open Sans", sans-serif;
   background: #fcfcfc;
+  overflow: hidden;
 }
 
 #game-options {
@@ -28,11 +28,10 @@ a {
   color: black;
   font-size: 1.25rem;
   display: block;
-  background-color: burlywood;
-  width: 100%;
+  background-color: lightsteelblue;
   border-radius: 5px;
   text-align: center;
-  padding: 1rem;
-  margin: 20px 0;
+  padding: 24px;
+  margin: 24px;
 }
 /*# sourceMappingURL=index.css.map */
