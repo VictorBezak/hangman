@@ -1,4 +1,4 @@
-import GameState from './classes/GameState';
+import GameState from './classes/GameState.js';
 // import ConfettiGenerator from "confetti-js";
 
 let gameState;
@@ -16,6 +16,7 @@ if (startGameBtn && answerInput) {
     if (answerInput.value !== "") {
       answer = answerInput.value.toUpperCase();
       gameState = new GameState(answer);
+
       console.log(gameState)
       letterBank = initGame(answer)
       console.log(answer)
@@ -34,81 +35,82 @@ if (startGameBtn && answerInput) {
 
 // Body container
 
-const body = document.getElementById('body-container');
-let head;
-let leftEye;
-let rightEye;
-let torso;
-let leftArm;
-let rightArm;
-let leftLeg;
-let rightLeg;
+// const body = document.getElementById('body-container');
+// let head;
+// let leftEye;
+// let rightEye;
+// let torso;
+// let leftArm;
+// let rightArm;
+// let leftLeg;
+// let rightLeg;
 
 
 // Body Parts
 
-if (body) {
-  head = body.querySelector('.head');
+// if (body) {
+//   head = body.querySelector('.head');
 
-  leftEye = body.querySelector('.eye.left');
-  rightEye = body.querySelector('.eye.right');
+//   leftEye = body.querySelector('.eye.left');
+//   rightEye = body.querySelector('.eye.right');
   
-  torso = body.querySelector('.torso');
+//   torso = body.querySelector('.torso');
   
-  leftArm = body.querySelector('.arm.left');
-  rightArm = body.querySelector('.arm.right');
+//   leftArm = body.querySelector('.arm.left');
+//   rightArm = body.querySelector('.arm.right');
   
-  leftLeg = body.querySelector('.leg.left');
-  rightLeg = body.querySelector('.leg.right');
-}
+//   leftLeg = body.querySelector('.leg.left');
+//   rightLeg = body.querySelector('.leg.right');
+// }
 
 // Body Functions
 
-function show(part) {
-  if (part) {
-    part.classList.toggle('show');
-  } else {
-    console.log("part does not exist");
-  }
-}
+// function show(part) {
+//   if (part) {
+//     part.classList.toggle('show');
+//   } else {
+//     console.log("part does not exist");
+//   }
+// }
 
-function gameLost() {
-  if (body) {
-    body.classList.toggle('dead');
-  }
-  setTimeout(() => alert("game lost"), 0);
-}
+// function gameLost() {
+//   if (body) {
+//     body.classList.toggle('dead');
+//   }
+//   setTimeout(() => alert("game lost"), 0);
+// }
 
 function badGuess() {
   missCounter += 1;
+  let hm = gameState.hangman
   
   switch (missCounter) {
     case 1:
-      show(head);
+      hm.showPart(hm.head);
       break;
     case 2:
-      show(leftEye);
+      hm.showPart(hm.leftEye);
       break;
     case 3:
-      show(rightEye);
+      hm.showPart(hm.rightEye);
       break;
     case 4:
-      show(torso);
+      hm.showPart(hm.torso);
       break;
     case 5:
-      show(leftArm);
+      hm.showPart(hm.leftArm);
       break;
     case 6:
-      show(rightArm);
+      hm.showPart(hm.rightArm);
       break;
     case 7:
-      show(leftLeg);
+      hm.showPart(hm.leftLeg);
       break;
     case 8:
-      show(rightLeg);
+      hm.showPart(hm.rightLeg);
       break;
     case 9:
-      gameLost();
+      gameState.lost();
   }
 }
 
@@ -125,12 +127,12 @@ function initGame(answerValue) {
 }
 
 // function resetGraphic() {
-//   body.classList.remove("dead");
-//   visibleBodyParts = body.querySelectorAll(".show");
+  // body.classList.remove("dead");
+  // visibleBodyParts = body.querySelectorAll(".show");
   
-//   for(let i = 0; i < visibleBodyParts.length; i++) {
-//     visibleBodyParts[i].classList.toggle("show");
-//   }
+  // for(let i = 0; i < visibleBodyParts.length; i++) {
+  //   visibleBodyParts[i].classList.toggle("show");
+  // }
 // }
 
 function showAnswerSpaces(value) {
