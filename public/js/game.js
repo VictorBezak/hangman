@@ -1,5 +1,4 @@
 import Game from './classes/Game.js';
-// import ConfettiGenerator from "confetti-js";
 
 // Answer Input
 
@@ -14,12 +13,6 @@ if (startGameBtn && answerInput) {
 
       game = new Game(answer);
       game.init();
-      console.log(game)
-
-      // letterBank = initGame(answer)
-      // console.log(answer)
-
-      
     }
   })
 }

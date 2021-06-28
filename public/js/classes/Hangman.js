@@ -50,10 +50,4 @@ export default class Hangman {
             console.log(`part "${part}" does not exist`);
         }
     }
-
-    showParts(num) {
-        switch (num) {
-
-        }
-    }
 }

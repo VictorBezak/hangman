@@ -1,10 +1,13 @@
 import Hangman from './Hangman.js';
 import AnswerSpaces from './AnswerSpaces.js';
 import LetterBank from './LetterBank.js';
+import ConfettiGenerator from "../deps/confetti.js";
 
 export default class {
   constructor(answer) {
     this.answer = answer;
+    this.lettersToGuess = new Set(answer);
+    this.lettersToGuess.delete(" ");
     this.incorrectGuesses = 0;
     this.hangman = new Hangman();
     this.hangman.init();
@@ -16,33 +19,36 @@ export default class {
     // Clear input prompt and show game board
     this.showGameBoard()
     this.answerSpaces.init()
-    this.letterBank.init(this.onGuess)
+    this.letterBank.init()
+
+    const bank = document.getElementById("word-bank")
+
+    if (bank) {
+      bank.addEventListener("click", (e) => {
+        const target = e.target;
+
+        if (target && target.classList.contains("letter")) {
+          let selectedLetter = target.textContent;
     
-    // Initialize game board
-    // this.hangman.reset()
-    // showAnswerSpaces(answerValue)
-    // showLetterBank(letterBank)
-  }
+          if (selectedLetter) {
+            if (this.answer.includes(selectedLetter.toUpperCase())) {
+              this.answerSpaces.showLetter(selectedLetter);
+              this.lettersToGuess.delete(selectedLetter)
+            } else {
+              this.badGuess();
+            }
 
-  onGuess(e) {
-    const target = e.target;
-
-    if (target && target.classList.contains("letter")) {
-      let selectedLetter = target.textContent;
-
-      if (selectedLetter) {
-        let bankIndex = allLetters.indexOf(selectedLetter.toUpperCase())
-        
-        if (this.answer.includes(selectedLetter.toUpperCase())) {
-          console.log(`${selectedLetter} is in answer`);
-          showLetter(selectedLetter);
-        } else {
-          console.log(`${selectedLetter} is not in answer`);
-          this.badGuess();
+            if (this.lettersToGuess.size === 0) {
+              this.won();
+            } else if (this.incorrectGuesses < 9) {
+              // remove letter from bank options
+              let bankIndex = this.letterBank.bank.indexOf(selectedLetter.toUpperCase())
+              this.letterBank.bank.splice(bankIndex, 1)
+              this.letterBank.show(this.letterBank.bank)
+            }
+          }
         }
-        
-        allLetters.splice(bankIndex, 1)
-      }
+      })
     }
   }
 
@@ -57,17 +63,10 @@ export default class {
       }
     }
   }
-
-  reset() {}
-
-  guess(letter) {
-
-  }
-
   
   badGuess() {
     this.incorrectGuesses += 1;
-    let hm = game.hangman
+    let hm = this.hangman
     
     switch (this.incorrectGuesses) {
       case 1:
@@ -95,17 +94,52 @@ export default class {
         hm.showPart(hm.rightLeg);
         break;
       case 9:
-        game.lost();
+        this.lost();
     }
   }
 
   lost() {
     this.hangman.die();
 
-    setTimeout(() => alert("game lost"), 0);
+    this.displayPlayAgain()
+
+    setTimeout(() => alert("You lose"), 0);
   }
 
   won() {
-    alert("game won")
+    this.confetti();
+
+    this.displayPlayAgain();
+
+    setTimeout(() => alert("You win!"), 0);
+  }
+
+  confetti() {
+    let canvas = document.createElement("canvas");
+    canvas.id = "confetti";
+    
+    document.querySelector("body").appendChild(canvas)
+
+    let confettiSettings = {
+      target: canvas
+    };
+
+    const confetti = new ConfettiGenerator(confettiSettings)
+
+    confetti.render()
+  }
+
+  displayPlayAgain() {
+    let retryBtn = document.createElement("button");
+    retryBtn.textContent = "Play Again";
+    retryBtn.id = "play-again"
+
+    retryBtn.addEventListener("click", () => location.reload())
+
+    let bank = document.getElementById('word-bank');
+    bank.style.display = "block"
+    bank.style.width = "100%"
+    bank.innerHTML = "";
+    bank.appendChild(retryBtn);
   }
 }

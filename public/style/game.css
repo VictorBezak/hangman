@@ -13,6 +13,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
 }
 
 #answer-input-prompt {
@@ -39,11 +40,12 @@ body {
   padding: 0.5rem;
 }
 
-#answer-input-prompt button {
+#answer-input-prompt button, #play-again {
   width: 100%;
   margin-top: 12px;
   font-size: 1rem;
   padding: 2rem 0;
+  z-index: 1;
 }
 
 #game-board {
@@ -51,16 +53,16 @@ body {
   height: 100%;
   -ms-grid-rows: 2fr 1fr 2fr;
       grid-template-rows: 2fr 1fr 2fr;
-  justify-items: center;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: end;
+  place-items: center;
 }
 
 #body-container {
   width: 100px;
   height: 200px;
   position: relative;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
 }
 
 .body-part {
@@ -183,6 +185,12 @@ body {
   font-weight: bold;
 }
 
+#answer-board {
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
 #letter-spaces {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -200,6 +208,15 @@ body {
 
 #letter-spaces .letter-space:not(.whitespace) {
   border-bottom: solid 2px black;
+}
+
+#confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 li {

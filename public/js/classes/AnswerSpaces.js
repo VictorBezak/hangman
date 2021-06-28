@@ -37,14 +37,11 @@ export default class AnswerSpaces {
 
     if (letterSpaces) {
       let matchingIndeces = []
-      for (let i = 0; i < answer.length; i++) {
-        console.log(letter, answer[i], answer[i] === letter)
-        if (answer[i] === letter) {
+      for (let i = 0; i < this.answer.length; i++) {
+        if (this.answer[i] === letter) {
           matchingIndeces.push(i)
         }
       }
-
-      console.log(letterSpaces, matchingIndeces)
 
       matchingIndeces.forEach(index => {
         letterSpaces.children[index].textContent = letter.toUpperCase();

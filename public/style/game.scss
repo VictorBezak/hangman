@@ -30,21 +30,21 @@ body {
       padding: 0.5rem;
     }
   }
-  button {
-    width: 100%;
-    margin-top: 12px;
-    font-size: 1rem;
-    padding: 2rem 0;
-  }
+}
+
+#answer-input-prompt button, #play-again {
+  width: 100%;
+  margin-top: 12px;
+  font-size: 1rem;
+  padding: 2rem 0;
+  z-index: 1;
 }
 
 #game-board {
   display: none;
   height: 100%;
   grid-template-rows: 2fr 1fr 2fr;
-  justify-items: center;
-  align-items: end;
-  // height: 100%;
+  place-items: center;
 }
 
 $BODY_WIDTH: 100px;
@@ -57,6 +57,7 @@ $TORSO_LENGTH: $BODY_HEIGHT - $HEAD_DIAMETER - $LIMB_LENGTH * 1.2;
   width: $BODY_WIDTH;
   height: $BODY_HEIGHT;
   position: relative;
+  align-self: end;
 }
 
 .body-part {
@@ -166,9 +167,9 @@ $TORSO_LENGTH: $BODY_HEIGHT - $HEAD_DIAMETER - $LIMB_LENGTH * 1.2;
   }
 }
 
-// #answer-board {
-//   align-self: end;
-// }
+#answer-board {
+  align-self: end;
+}
 #letter-spaces {
   display: flex;
   padding: 0;
@@ -186,6 +187,14 @@ $TORSO_LENGTH: $BODY_HEIGHT - $HEAD_DIAMETER - $LIMB_LENGTH * 1.2;
   }
 }
 
+#confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 
 li {
   list-style: none;
